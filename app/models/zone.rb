@@ -138,6 +138,10 @@ class Zone < ApplicationRecord
     ems_middlewares.flat_map(&:middleware_servers)
   end
 
+  def datasources
+    ems_middlewares.flat_map(&:middleware_datasources)
+  end
+
   def ems_datawarehouses
     ext_management_systems.select { |e| e.kind_of?(ManageIQ::Providers::DatawarehouseManager) }
   end
